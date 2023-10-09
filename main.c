@@ -8,11 +8,12 @@
 int main(void)
 {
 	char *prompt = "mainoon_shell$ ";
+	char *lineptr;
 
 	while (1)
 	{
 		printf("%s", prompt);
-		read_input();
-		token_line(lineptr);
+		lineptr = read_input();
+		tokens_line(lineptr);
 	}
 }

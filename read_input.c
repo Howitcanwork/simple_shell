@@ -5,20 +5,15 @@ char *read_input(void)
 	char *lineptr;
 	size_t n = 0;
 	ssize_t command_read;
-	char *lineptr_copy = NULL;
-	const char *delim = " \n";
-	char *token;
-	int num_tokens = 0;
-	char **argv;
-	int i;
 
 	command_read = getline(&lineptr, &n, stdin);
 
 	if (command_read == -1)
 	{
-		if (feof(sydin))
+		if (feof(stdin))
 		{
 			free(lineptr);
+			perror("Exiting shell");
 			exit(EXIT_SUCCESS);
 		}
 		else

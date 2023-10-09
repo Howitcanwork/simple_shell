@@ -9,14 +9,13 @@
 char **tokens_line(char *lineptr)
 {
 	const char *delim = " \t\r\n";
-	char *token;
-	int buffsize = 64;
+	int buffsize = 64, i = 0, j;
 	char **parts = malloc(buffsize * sizeof(char *));
-	int i = 0, j;
+	char token, **new_tokens;
 
 	if (!parts)
 	{
-		perror(Error: memory allocation);
+		perror("memory allocation error");
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(lineptr, delim);
@@ -31,11 +30,10 @@ char **tokens_line(char *lineptr)
 		if (i >= buffsize)
 		{
 			buffsize += buffsize;
-			char **new_tokens = malloc(buffsize * sizeof(char *));
-
+			new_tokens = malloc(buffsize * sizeof(char *));
 			if (!new_tokens)
 			{
-				perror(Error: memory allocation);
+				perror("memory allocation error");
 				exit(EXIT_FAILURE);
 			}
 			for (j = 0; j < i; j++)
@@ -47,6 +45,7 @@ char **tokens_line(char *lineptr)
 		}
 		token = strtok(NULL, delim);
 	}
+	printf("%s\n", lineptr);
 	parts[i] = NULL;
 	return (parts);
 }
