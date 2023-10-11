@@ -7,9 +7,26 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <signal.h>
+#include <limits.h>
 
 /*functions prototybes*/
 char *read_input(void);
 char **tokens_line(char *lineptr);
+int ececute_arguments(char **args);
+void my_exit(int argc, char **argv);
+char *append_file(char *dir, char *file);
+char *find_executable(char **dirs, char *command);
+void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *my_memcpy(char *to, char *from, unsigned int n);
+char **parse_path(char *path);
+int new_process(char **args);
+
 
 #endif
