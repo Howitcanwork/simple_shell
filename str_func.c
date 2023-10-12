@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * my_strlen - length of string
+ * _strlen - length of string
  * @st: string
  * Return: int of string length
  */
 
-int my_strlen(char *st)
+int _strlen(char *st)
 {
 	int j = 0;
 
@@ -19,13 +19,13 @@ int my_strlen(char *st)
 }
 
 /**
- * my_strcpy - copies a string
+ * _strcpy - copies a string
  * @dest: destination
  * @src: source
  * Return: pointer to dest
  */
 
-char *my_strcpy(char *dest, char *src)
+char *_strcpy(char *dest, char *src)
 {
 	int j = 0;
 
@@ -43,13 +43,13 @@ char *my_strcpy(char *dest, char *src)
 }
 
 /**
- * my_strcat - conc string
+ * _strcat - conc string
  * @dest: destination
  * @src: source
  * Return: pointer to dest
  */
 
-char *my_strcat(char *dest, char *src)
+char *_strcat(char *dest, char *src)
 {
 	char *por = dest;
 
@@ -64,12 +64,12 @@ char *my_strcat(char *dest, char *src)
 }
 
 /**
- * my_strcmp - comparison between two string
+ * _strcmp - comparison between two string
  * @st1: first string
  * @st2: sec string
  * Return: posative if st1 > st2, negative if st1 < st2, zero if st1 == st2
  */
-int my_strcmp(char *st1, char *st2)
+int _strcmp(char *st1, char *st2)
 {
 	while (*st1 && *st2)
 	{
@@ -86,19 +86,19 @@ int my_strcmp(char *st1, char *st2)
 }
 
 /**
- * my_strdup - duplicates a string
+ * _strdup - duplicates a string
  * @string: string dup
  * Return: pointer to the duplicated string
  */
 
-char *my_strdup(const char *string)
+char *_strdup(const char *str)
 {
 	int leng = 0;
 	char *por;
 
-	if (string == NULL)
+	if (str == NULL)
 		return (NULL);
-	while (*string++)
+	while (*str++)
 		leng++;
 
 	por = malloc(sizeof(char) * (leng + 1));
@@ -106,7 +106,7 @@ char *my_strdup(const char *string)
 	if (!por)
 		return (NULL);
 	for (leng++; leng--;)
-		por[leng] = *--string;
+		por[leng] = *--str;
 
 	return (por);
 }

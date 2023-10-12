@@ -9,16 +9,16 @@
 
 char *append_file(char *dir, char *file)
 {
-	char *path = malloc(my_strlen(dir) + 1 + my_strlen(file) + 1);
+	char *path = malloc(_strlen(dir) + 1 + _strlen(file) + 1);
 
 	if (path == NULL)
 	{
 		perror("error allocating memory");
 		return (NULL);
 	}
-	my_strcpy(path, dir);
-	my_strcat(path, "/");
-	my_strcat(path, file);
+	_strcpy(path, dir);
+	_strcat(path, "/");
+	_strcat(path, file);
 	return (path);
 }
 
@@ -41,7 +41,7 @@ char *find_executable(char **dirs, char *command)
 	}
 	if (strchr(command, '/'))
 	{
-		return (my_strdup(command));
+		return (_strdup(command));
 	}
 	for (i = 0; dirs[i] != NULL; i++)
 	{
