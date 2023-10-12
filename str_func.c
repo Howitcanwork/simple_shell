@@ -51,7 +51,7 @@ char *my_strcpy(char *dest, char *src)
 
 char *my_strcat(char *dest, char *src)
 {
-	char *ptr = dest;
+	char *por = dest;
 
 	while (*dest)
 		dest++;
@@ -60,7 +60,7 @@ char *my_strcat(char *dest, char *src)
 
 	*dest = *src;
 
-	return (ptr);
+	return (por);
 }
 
 /**
@@ -94,19 +94,19 @@ int my_strcmp(char *st1, char *st2)
 char *my_strdup(const char *string)
 {
 	int leng = 0;
-	char *ptr;
+	char *por;
 
 	if (string == NULL)
 		return (NULL);
 	while (*string++)
 		leng++;
 
-	ptr = malloc(sizeof(char) * (leng + 1));
+	por = malloc(sizeof(char) * (leng + 1));
 
-	if (!ptr)
+	if (!por)
 		return (NULL);
 	for (leng++; leng--;)
-		ptr[leng] = *--string;
+		por[leng] = *--string;
 
-	return (ptr);
+	return (por);
 }
