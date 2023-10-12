@@ -19,8 +19,8 @@
 /*functions prototybes*/
 char *read_input(void);
 char **tokens_line(char *lineptr);
-int ececute_arguments(char **args);
-void my_exit(int argc, char **argv);
+int execute_arguments(char **args);
+int my_exit(int argc, char **argv);
 char *append_file(char *dir, char *file);
 char *find_executable(char **dirs, char *command);
 void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size);

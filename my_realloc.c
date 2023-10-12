@@ -38,7 +38,7 @@ void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		exit(errno);
 		free(block);
 	}
-	_memcpy(block, ptr, old_size);
+	my_memcpy(block, ptr, old_size);
 	return (block);
 }
 

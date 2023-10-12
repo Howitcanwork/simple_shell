@@ -11,14 +11,15 @@ char **tokens_line(char *lineptr)
 	const char *delim = " \t\r\n";
 	int buffsize = 64, i = 0, j;
 	char **parts = malloc(buffsize * sizeof(char *));
-	char token, **new_tokens;
+	char *token, **new_tokens;
+	char *lineptr_copy = strdup(lineptr);
 
-	if (!parts)
+	if (!parts || !lineptr_copy)
 	{
 		perror("memory allocation error");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(lineptr, delim);
+	token = strtok(lineptr_copy, delim);
 	while (token != NULL)
 	{
 		if (token[0] == '#')
@@ -47,5 +48,6 @@ char **tokens_line(char *lineptr)
 	}
 	printf("%s\n", lineptr);
 	parts[i] = NULL;
+	free(lineptr_copy);
 	return (parts);
 }

@@ -7,15 +7,17 @@
  * Return: nothing
  */
 
-void my_exit(int argc, char **argv)
+int my_exit(int argc, char **argv)
 {
+	(void)argv;
+
 	if (argc == 1)
 	{
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
 		write(2, "exit: too many arguments\n", 25);
-		return (1);
+		return (EXIT_FAILURE);
 	}
 }

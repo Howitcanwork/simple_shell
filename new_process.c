@@ -11,13 +11,13 @@ int new_process(char **args)
 	pid_t pid;
 	int status;
 	char *path = getenv("PATH");
-	char **dirs = parase_path(path);
+	char **dirs = parse_path(path);
 	char *all_path = find_executable(dirs, args[0]);
 
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(all_path, args, environ) == -1)
+		if (execve(all_path, args, NULL) == -1)
 		{
 			perror("error while processing");
 		}
@@ -39,7 +39,7 @@ int new_process(char **args)
 }
 
 /**
- * parae_path - parases path environment
+ * parse_path - parases path environment
  * @path: path
  * Return: array of directories
  */
@@ -59,9 +59,9 @@ char **parse_path(char *path)
 		perror("error in copy");
 		return (NULL);
 	}
-	for (*p = path_copy; *p != '\0'; p++)
+	for (p = path_copy; *p != '\0'; p++)
 	{
-		if (*p == ';')
+		if (*p == ':')
 		{
 			colons++;
 		}
@@ -81,5 +81,6 @@ char **parse_path(char *path)
 		token= strtok(NULL, ":");
 	}
 	dirs[i] = NULL;
+	free(path_copy);
 	return (dirs);
 }

@@ -1,4 +1,4 @@
-#include "shell."
+#include "shell.h"
 
 /**
  * append_file - appends slash ans a file name
@@ -9,7 +9,7 @@
 
 char *append_file(char *dir, char *file)
 {
-	char *path = malloc(strlen(dir) + strlen(file) + 2);
+	char *path = malloc(strlen(dir) + 1 + strlen(file) + 1);
 
 	if (path == NULL)
 	{
@@ -39,13 +39,13 @@ char *find_executable(char **dirs, char *command)
 		perror("error no command");
 		return (NULL);
 	}
-	if (strchr(cmd, '/'))
+	if (strchr(command, '/'))
 	{
-		return (strdup(cmd));
+		return (strdup(command));
 	}
 	for (i = 0; dirs[i] != NULL; i++)
 	{
-		path = append_file(dirs[i], cmd);
+		path = append_file(dirs[i], command);
 		if (path == NULL)
 		{
 			return (NULL);
