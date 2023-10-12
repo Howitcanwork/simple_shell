@@ -27,6 +27,10 @@ void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *my_memcpy(char *to, char *from, unsigned int n);
 char **parse_path(char *path);
 int new_process(char **args);
-
+int my_strcmp(char *st1, char *st2);
+char *my_strdup(const char *string)
+char *my_strcpy(char *dest, char *src);
+int my_strlen(char *st);
+char *my_strcat(char *dest, char *src);
 
 #endif
