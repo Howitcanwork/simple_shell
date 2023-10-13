@@ -30,9 +30,9 @@ char *my_memcpy(char *to, char *from, unsigned int n);
 char **parse_path(char *path);
 int new_process(char **args);
 int _strcmp(char *st1, char *st2);
-char *_strdup(const char *str)
-char *_strcpy(char *dest, char *src);
-int _strlen(char *st);
-char *_strcat(char *dest, char *src);
+char _strdup(const char *str)
+char *_strcpy(char *dest, char *src, int n);
+int my_strlen(char *st);
+char _strcat(char *dest, char *src);
 
 #endif

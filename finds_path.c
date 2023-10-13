@@ -9,14 +9,14 @@
 
 char *append_file(char *dir, char *file)
 {
-	char *path = malloc(_strlen(dir) + 1 + _strlen(file) + 1);
+	char *path = malloc(my_strlen(dir) + 1 + my_strlen(file) + 1);
 
 	if (path == NULL)
 	{
 		perror("error allocating memory");
 		return (NULL);
 	}
-	_strcpy(path, dir);
+	*_strcpy(path, dir);
 	_strcat(path, "/");
 	_strcat(path, file);
 	return (path);

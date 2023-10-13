@@ -1,49 +1,61 @@
 #include "shell.h"
+#include  <string.h>
+
 
 /**
- * _strlen - length of string
+ * my_strlen - length of string
  * @st: string
  * Return: int of string length
  */
 
-int _strlen(char *st)
+int my_strlen(char *st)
 {
-	int j = 0;
+	int i = 0;
 
 	if (!st)
 		return (0);
-	while (*st++)
-		j++;
 
-	return (j);
+	while (*st++)
+	{
+		i++;
+	}
+
+	return (i);
 }
 
 /**
- * _strcpy - copies a string
+ * *_strcpy - copies a string
  * @dest: destination
  * @src: source
+ * @n: amount of char be cpoied
  * Return: pointer to dest
  */
 
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *dest, const char *src, int n)
 {
-	int j = 0;
-
-	if(dest == src || src == 0)
-		return (dest);
-	while (src[j])
+	int i,j;
+	char *or_dest = dest;
+	i = 0;
+	
+	while (src[i] != '\0' && i < n -1)
 	{
-		dest[j] = src[j];
-		j++;
+		dest[i] = src[i];
+		i++;
 	}
-
-	dest[j] = 0;
-
-	return (dest);
+	if (i < n)
+	{
+		j = i;
+		while (j < n)
+		{
+			dest[j] = '\0';
+			j++;
+		}
+	}
+	return (or_dest);
 }
 
 /**
- * _strcat - conc string
+ * *_strcat - conc string
  * @dest: destination
  * @src: source
  * Return: pointer to dest
@@ -54,9 +66,13 @@ char *_strcat(char *dest, char *src)
 	char *por = dest;
 
 	while (*dest)
+	{
 		dest++;
+	}
 	while (*src)
+	{
 		*dest++ = *src++;
+	}
 
 	*dest = *src;
 
@@ -86,20 +102,23 @@ int _strcmp(char *st1, char *st2)
 }
 
 /**
- * _strdup - duplicates a string
- * @string: string dup
+ * *_strdup - duplicates a string
+ * @str: string dup
  * Return: pointer to the duplicated string
  */
 
 char *_strdup(const char *str)
 {
+	(void)str;
 	int leng = 0;
 	char *por;
 
 	if (str == NULL)
 		return (NULL);
 	while (*str++)
+	{
 		leng++;
+	}
 
 	por = malloc(sizeof(char) * (leng + 1));
 
