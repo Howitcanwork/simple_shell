@@ -46,7 +46,6 @@ char **tokens_line(char *lineptr)
 		}
 		token = strtok(NULL, delim);
 	}
-	printf("%s\n", lineptr);
 	parts[i] = NULL;
 	free(lineptr_copy);
 	return (parts);

@@ -17,7 +17,7 @@ int new_process(char **args)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(all_path, args, NULL) == -1)
+		if (execve(all_path, args, environ) == -1)
 		{
 			perror("error while processing");
 		}

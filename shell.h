@@ -16,6 +16,8 @@
 #include <signal.h>
 #include <limits.h>
 
+extern char **environ;
+
 /*functions prototybes*/
 char *read_input(void);
 char **tokens_line(char *lineptr);
