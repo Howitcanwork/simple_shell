@@ -41,9 +41,9 @@ int execute_arguments(char **args)
  * Return: nothing
  */
 
-int my_exit(int **argc)
+int my_exit(char **argc)
 {
-	if (argc == 1)
+	if (argc[1])
 	{
 		free(argc);
 		exit(EXIT_SUCCESS);
@@ -62,13 +62,13 @@ int my_exit(int **argc)
 
 int my_env(char **argc)
 {
-	extern char **environ;
 	int i = 0;
 	int length = 0;
+	(void)(**argc);
 
 	while (environ[i])
 	{
-		length = _strlen(environ[i]);
+		length = strlen(environ[i]);
 		write(1, environ[i], length);
 		i++;
 	}

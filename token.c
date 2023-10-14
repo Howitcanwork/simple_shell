@@ -12,7 +12,7 @@ char **tokens_line(char *lineptr)
 	int buffsize = 64, i = 0, j;
 	char **parts = malloc(buffsize * sizeof(char *));
 	char *token, **new_tokens;
-	char *lineptr_copy = *strdup_f(lineptr);
+	char *lineptr_copy = strdup(lineptr);
 
 	if (!parts || !lineptr_copy)
 	{

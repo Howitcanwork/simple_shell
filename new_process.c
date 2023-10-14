@@ -9,7 +9,7 @@
 int new_process(char **args)
 {
 	pid_t pid;
-	int status;
+	int status, execute = 0;
 	char *path = getenv("PATH");
 	char **dirs = parse_path(path);
 	char *all_path = find_executable(dirs, args[0]);
@@ -17,7 +17,8 @@ int new_process(char **args)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(all_path, args, environ) == -1)
+		execute = execve(all_path, args, environ);
+		if (execute == -1)
 		{
 			perror("error while processing");
 		}
@@ -35,7 +36,7 @@ int new_process(char **args)
 	}
 	free(dirs);
 	free(all_path);
-	return (-1);
+	return (0);
 }
 
 /**
@@ -45,7 +46,7 @@ int new_process(char **args)
  */
 char **parse_path(char *path)
 {
-	char *path_copy = *strdup_f(path);
+	char *path_copy = strdup(path);
 	char *p, *token;
 	int colons = 0, i = 0;
 	char **dirs;

@@ -22,18 +22,14 @@ extern char **environ;
 char *read_input(void);
 char **tokens_line(char *lineptr);
 int execute_arguments(char **args);
-int my_exit(int argc, char **argv);
+int my_exit(char **argc);
 char *append_file(char *dir, char *file);
 char *find_executable(char **dirs, char *command);
 void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *my_memcpy(char *to, char *from, unsigned int n);
 char **parse_path(char *path);
 int new_process(char **args);
-//int _strcmp(char *st1, char *st2);
-//char _strdup(const char *str)
-//char *_strcpy(char *dest, char *src, int n);
-//int my_strlen(char *st);
-//char _strcat(char *dest, char *src);
+int my_env(char **argc);
 
 int strlen_f(char *s);
 char *strdup_f(const char *s);
