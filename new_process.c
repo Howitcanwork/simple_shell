@@ -45,7 +45,7 @@ int new_process(char **args)
  */
 char **parse_path(char *path)
 {
-	char *path_copy = _strdup(path);
+	char *path_copy = *strdup_f(path);
 	char *p, *token;
 	int colons = 0, i = 0;
 	char **dirs;

@@ -6,12 +6,11 @@
  * @src: source
  * Return: pointer to destination
  */
-char *strcpy(char *dest, char *src)
+char *strcpy_f(char *dest, char *src)
 {
 	char *or_dest = dest;
 
 	while ((*dest++ = *src++) != '\0');
-
 	return (or_dest);
 }
 
@@ -21,19 +20,20 @@ char *strcpy(char *dest, char *src)
  * Return: integer length of string
  */
 
-size_t strlen_f(const char *s)
+int strlen_f(char *s)
 {
-	size_t length = 0;
+	int i = 0;
 
-	while (s[length] != '\0')
+	while (*s != '\0')
 	{
-		length++;
+		i++;
+		s++;
 	}
-	return (length);
+	return (i);
 }
 
 /**
- * strdup_f - function
+ * *strdup_f - function
  * @s: string
  * Return: pointer to dup string
  */
@@ -41,13 +41,13 @@ size_t strlen_f(const char *s)
 char *strdup_f(const char *s)
 {
 	size_t len = strdup_f(s);
-	char *new_s = (char*)malloc(len + 1);
+	char *new_s = (char *)malloc(len + 1);
 
 	if (new_s == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	strdup_f(new_s, s);
-	return new_s;
+	return (new_s);
 }
