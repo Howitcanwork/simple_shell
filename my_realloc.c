@@ -43,19 +43,18 @@ void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * my_memcpy - copies memory
+ * _memcpy - copies memory
  * @to: destination
  * @from: source
  * @n: number of bytes to be copied
  * Return: pointer to dest
  */
-char *my_memcpy(char *to, char *from, unsigned int n)
+void _memcpy(void *to, const void *from, unsigned int n)
 {
-	char *ptr = to;
+	char *fromptr = (char *)from;
+	char *toptr = (char *)to;
 
-	while (n--)
-	{
-		*to++ = *from++;
-	}
-	return (ptr);
+	for (l = 0; l < size; l++)
+		toptr[l] = fromptr[l];
+
 }
