@@ -28,8 +28,8 @@ int main(void)
 					else
 					{
 						builtin = execute_builtin(args, status);
-						if (builtin != 0)
-							status = command_notfound(args, count) , free(line);
+if (builtin != 0)
+	status = command_notfound(args, count), free(line);
 					}
 				}
 				else
@@ -73,6 +73,7 @@ void last_free(char *line)
 int pr_prompt(const char *prompt, unsigned int size)
 {
 	int printed;
+
 	if (isatty(STDIN_FILENO))
 	{
 		printed = write(1, prompt, size);
