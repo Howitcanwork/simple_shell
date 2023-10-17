@@ -18,7 +18,8 @@
 
 extern char **environ;
 
-int token_line(char *line, char **args);
+int token_line(char *line_copy, char **args);
+char *read_input(char *line);
 int execute_command(char **args);
 int execute_builtin(char **args, int status);
 int my_exit(char **args);
@@ -30,5 +31,7 @@ int _path(char **args);
 char *join_path_command(char *dir_env, char *args);
 int command_notfound(char **args, int count);
 void free_grid(char **grid, int heigth);
+int pr_prompt(const char *prompt, unsigned int size);
+char *_getenv(char *global_var);
 
 #endif

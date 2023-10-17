@@ -14,7 +14,7 @@ int _path(char **args)
 	char *array[121];
         int command_exist = -1, i = 0;
 
-        path_env = getenv("PATH");
+        path_env = _getenv("PATH");
         if (path_env == NULL)
 	{
 		perror("getenv");

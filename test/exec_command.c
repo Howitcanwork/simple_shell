@@ -9,12 +9,15 @@
 int execute_command(char **args)
 {
         pid_t pid;
-        int status = 0;
-        int exec_status = 0;
+        int status;
+	int exec_status;
         
         pid = fork();
         if (pid == -1)
+	{
             perror("failed");
+	    exit (EXIT_FAILURE);
+	}
         else if (pid == 0)
         {
                 exec_status = execve(args[0], args, environ);
@@ -31,8 +34,8 @@ int execute_command(char **args)
                         waitpid(pid ,&status, WUNTRACED);
                 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
         }
-        exec_status = WEXITSTATUS(status);
-        return (exec_status);
+        status = WEXITSTATUS(status);
+        return (status);
 }
 
 /**
@@ -115,7 +118,6 @@ int count_args(char **args)
 
 int my_env(char **args)
 {
-        extern char **environ;
         int i = 0;
         int length = 0;
 	(void)(args);

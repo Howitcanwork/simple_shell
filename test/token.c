@@ -13,17 +13,15 @@ int token_line(char *line, char **args)
         int i = 0;
         char *command, *token;
 	char *ptr = line;
-        char *line_copy = strdup(line);
         
-	if (line_copy == NULL)
+	if (line == NULL)
 	{
 		perror("strdup failed");
 		return (-1);
 	}
-        command = strtok(line_copy, delim);
+        command = strtok(line, delim);
 	if (command == NULL)
 	{
-		free(line_copy);
 		return (0);
 	}
         args[i] = command;

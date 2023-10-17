@@ -5,12 +5,12 @@
  */
 int main(void)
 {
-	size_t size = 0; 
 	ssize_t read = 0;
+	size_t size = 0;
 	char *line = NULL, *args[20];
 	int count = 1, path = 0, existed = 0, status = 0, builtin = 0;
 
-	printf("$ ");
+	pr_prompt("$ ", 2);
 	read = getline(&line, &size, stdin);
 	while (read != -1)
 	{
@@ -41,7 +41,7 @@ int main(void)
 		else if (*line == '\n')
 			free(line);
 		line = NULL, count++;
-		printf("$ "), read = getline(&line, &size, stdin);
+		pr_prompt("$ ", 2), read = getline(&line, &size, stdin);
 	}
 	last_free(line);
 	return (status);
@@ -61,6 +61,25 @@ void last_free(char *line)
 	}
 	if (!isatty(STDIN_FILENO))
 		free(line);
+}
+
+/**
+ * pr_prompt - prints prompt
+ * @prompt: pointer to string
+ * @size: size of prompt
+ * Return: 0
+ */
+
+int pr_prompt(const char *prompt, unsigned int size)
+{
+	int printed;
+	if (isatty(STDIN_FILENO))
+	{
+		printed = write(1, prompt, size);
+		if (printed == -1)
+			return (-1);
+	}
+	return (0);
 }
 
 /**
