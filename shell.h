@@ -26,16 +26,16 @@ int my_exit(char **argc);
 char *append_file(char *dir, char *file);
 char *find_executable(char **dirs, char *command);
 void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char *my_memcpy(char *to, char *from, unsigned int n);
+char *_memcpy(char *to, char *from, unsigned int n);
 char **parse_path(char *path);
 int new_process(char **args);
 int my_env(char **argc);
 
-int strlen_f(char *s);
-char *strdup_f(const char *s);
-char *strcpy_f(char *dest, char *src);
-char *strchr_f(char *s, char c);
-int strcmp_f(char *s1, char *s2);
-char *strcat_f(char *dest, char *src);
+int _strlen_f(char *s);
+char *_strdup_f(const char *s);
+char *_strcpy_f(char *dest, char *src);
+char *_strchr_f(char *s, char c);
+int _strcmp_f(char *s1, char *s2);
+char *_strcat_f(char *dest, char *src);
 
 #endif
