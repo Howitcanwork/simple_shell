@@ -30,6 +30,9 @@ char *_memcpy(char *to, char *from, unsigned int n);
 char **parse_path(char *path);
 int new_process(char **args);
 int my_env(char **argc);
+int _path(char **args);
+char *join_path_command(char *dir_env, char *args);
+int _exist(char *pathname);
 
 int _strlen_f(char *s);
 char *_strdup_f(const char *s);

@@ -12,8 +12,9 @@ int new_process(char **args)
 	int status, execute = 0;
 	char *path = getenv("PATH");
 	char **dirs = parse_path(path);
-	char *all_path = find_executable(dirs, args[0]);
+	char *all_path;
 
+	all_path = _path(dirs);
 	pid = fork();
 	if (pid == 0)
 	{

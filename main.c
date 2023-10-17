@@ -17,7 +17,7 @@ int main(void)
 		printf("%s", prompt);
 		lineptr = read_input();
 		args = tokens_line(lineptr);
-		state = new_process(args);
+		state = execute_arguments(args);
 	}
 	free(lineptr);
 	free(args);
