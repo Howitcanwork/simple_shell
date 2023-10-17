@@ -5,13 +5,13 @@
  */
 int main(void)
 {
-	size_t size = 0; /**Tamaño del buffer*/
+	size_t size = 0; 
 	ssize_t read = 0;
-	char *line = NULL, *args[20]; /**String de args que ingresa el usr*/
+	char *line = NULL, *args[20];
 	int count = 1, path = 0, existed = 0, status = 0, builtin = 0;
 
 	printf("$ ");
-	read = getline(&line, &size, stdin); /**sizeof entry, o -1 (EOF))*/
+	read = getline(&line, &size, stdin);
 	while (read != -1)
 	{
 		if (*line != '\n')
@@ -19,8 +19,8 @@ int main(void)
 			token_line(line, args);
 			if (args[0] != NULL)
 			{
-				existed = file_exist(args[0]);/**Exist evalua si path ingresado existe*/
-				if (existed != 0)/**No encontró el archivo*/
+				existed = file_exist(args[0]);
+				if (existed != 0)
 				{
 					path = _path(args);
 					if (path == 0)
@@ -32,7 +32,7 @@ int main(void)
 							status = command_notfound(args, count) , free(line);
 					}
 				}
-				else /**Encontró el archivo*/
+				else
 					status = execute_command(args), free(line);
 			}
 			else
