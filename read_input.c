@@ -1,27 +1,31 @@
 #include "shell.h"
 
-char *read_input(void)
+char *read_input(char *line)
 {
-	char *lineptr;
-	size_t n = 0;
-	ssize_t command_read;
+        size_t n = 0;
+        ssize_t read;
+        size_t rm;
 
-	command_read = getline(&lineptr, &n, stdin);
-
-	if (command_read == -1)
+        read = getline(&line, &n, stdin);
+	if (*line == '\n')
 	{
-		if (feof(stdin))
-		{
-			free(lineptr);
-			perror("Exiting shell");
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-		free(lineptr);
-		perror("Error reading line from input");
-		exit(EXIT_FAILURE);
-		}
+		putchar('\n');
 	}
-	return (lineptr);
+
+        if (read == -1)
+        {
+                if (feof(stdin))
+                {
+                        perror("Exiting shell");
+                        exit(EXIT_SUCCESS);
+                }
+                else
+                {
+                perror("Error reading line from input");
+                exit(EXIT_FAILURE);
+                }
+        }
+        rm = strcspn(line, "\n/");
+        line[rm] = '\0';
+        return (line);
 }

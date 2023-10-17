@@ -18,27 +18,20 @@
 
 extern char **environ;
 
-/*functions prototybes*/
-char *read_input(void);
-char **tokens_line(char *lineptr);
-int execute_arguments(char **args);
-int my_exit(char **argc);
-char *append_file(char *dir, char *file);
-char *find_executable(char **dirs, char *command);
-void *my_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char *_memcpy(char *to, char *from, unsigned int n);
-char **parse_path(char *path);
-int new_process(char **args);
-int my_env(char **argc);
+int token_line(char *line_copy, char **args);
+char *read_input(char *line);
+int execute_command(char **args);
+int execute_builtin(char **args, int status);
+int my_exit(char **args);
+int my_env(char **args);
+int count_args(char **args);
+int file_exist(char *pathname);
+void last_free(char *line);
 int _path(char **args);
 char *join_path_command(char *dir_env, char *args);
-int _exist(char *pathname);
-
-int _strlen_f(char *s);
-char *_strdup_f(const char *s);
-char *_strcpy_f(char *dest, char *src);
-char *_strchr_f(char *s, char c);
-int _strcmp_f(char *s1, char *s2);
-char *_strcat_f(char *dest, char *src);
+int command_notfound(char **args, int count);
+void free_grid(char **grid, int heigth);
+int pr_prompt(const char *prompt, unsigned int size);
+char *_getenv(char *global_var);
 
 #endif
