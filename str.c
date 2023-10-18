@@ -8,14 +8,14 @@
  */
 char *_strcpy(char *dest, char *src)
 {
-	char *pt = dest;
+	char *ptr = dest;
 
 	while (*src)
 	{
 		*dest++ = *src++;
 	}
 	*dest = 0;
-	
+
 	return (ptr);
 }
 
@@ -28,13 +28,13 @@ char *_strcpy(char *dest, char *src)
 
 char *_strcat(char *dest, char *src)
 {
-	char *pr = dest + _strlen(dest);
+	char *ptr = dest + _strlen(dest);
 
 	while (*src)
 	{
-		*pt++ = *src++;
+		*ptr++ = *src++;
 	}
-	*pr = 0;
+	*ptr = 0;
 
 	return (dest);
 }

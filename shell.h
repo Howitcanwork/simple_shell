@@ -33,5 +33,5 @@ int command_notfound(char **args, int count);
 void free_array(char **array, int n);
 int pr_prompt(const char *prompt, unsigned int size);
 char *_getenv(char *global);
-
+int _strlen(char *s);
 #endif
