@@ -39,5 +39,7 @@ char *_strdup(char *strs);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *_strchr(char *s, char c);
+ssize_t r_line(char **leptr, size_t *m, FILE *stream_r);
+void g_line(char **leptr, size_t *m, char *buf, size_t k);
 
 #endif
