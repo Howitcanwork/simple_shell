@@ -34,4 +34,10 @@ void free_array(char **array, int n);
 int pr_prompt(const char *prompt, unsigned int size);
 char *_getenv(char *global);
 int _strlen(char *s);
+int _strcmp(char *s1, char *s2);
+char *_strdup(char *strs);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+char *_strchr(char *s, char c);
+
 #endif
