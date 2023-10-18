@@ -62,8 +62,8 @@ char *join_path_command(char *dir_env, char *args)
 
 	if (!dir_env || !args)
 		return (NULL);
-	path_len = strlen(dir_env);
-	cmd_len = strlen(args);
+	path_len = _strlen(dir_env);
+	cmd_len = _strlen(args);
 	joined = malloc(path_len + cmd_len + 2);
 	if (!joined)
 		return (NULL);
@@ -73,7 +73,7 @@ char *join_path_command(char *dir_env, char *args)
 		joined[path_len] = '/';
 		joined[path_len + 1] = '\0';
 	}
-	strcat(joined, args);
+	_strcat(joined, args);
 	return (joined);
 }
 

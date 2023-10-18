@@ -22,7 +22,7 @@ char *_getenv(char *global)
 		if (env_copy == NULL)
 			return (NULL);
 		envtoken = strtok(env_copy, delim);
-		if (strcmp(envtoken, global) == 0)
+		if (_strcmp(envtoken, global) == 0)
 		{
 			envtoken = strtok(NULL, delim);
 			if (envtoken == NULL || envtoken[i] == '\0')
@@ -30,7 +30,7 @@ char *_getenv(char *global)
 				free(env_copy);
 				return (NULL);
 			}
-			envtoken_copy = strdup(envtoken);
+			envtoken_copy = _strdup(envtoken);
 			free(env_copy);
 			return (envtoken_copy);
 		}

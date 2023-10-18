@@ -106,7 +106,7 @@ int command_notfound(char **args, int count)
 	write(2, ": ", 2);
 	printf("%d", count);
 	write(2, ": ", 2);
-	write(2, args[0], strlen(args[0]));
+	write(2, args[0], _strlen(args[0]));
 	write(2, ": not found\n", 12);
 	return (127);
 }

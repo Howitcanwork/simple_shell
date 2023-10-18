@@ -132,7 +132,7 @@ int my_env(char **args)
 
 	while (environ[i])
 	{
-		length = strlen(environ[i]);
+		length = _strlen(environ[i]);
 		write(1, environ[i], length);
 		i++;
 	}
