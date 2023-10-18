@@ -49,7 +49,7 @@ int file_exist(char *path)
 {
 	int status;
 
-	status = (open(pathname, O_RDONLY));
+	status = (open(path, O_RDONLY));
 	if (status != -1)
 	{
 		close(status);
