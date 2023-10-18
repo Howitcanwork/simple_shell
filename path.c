@@ -7,22 +7,19 @@
  */
 int _path(char **args)
 {
-	char *path_env, *path_copy;
-	char *dir_env;
-	char *command_path;
-	char *array[121];
+	char *path_env, *path_copy, *dir_env, *command_path, *array[121];
 	int command_exist = -1, i = 0;
 
 	path_env = _getenv("PATH");
 	if (path_env == NULL)
 	{
-		perror("getenv");
 		return (-1);
 	}
 	path_copy = strdup(path_env);
 	dir_env = strtok(path_copy, ":");
 	if (dir_env == NULL)
 		return (-1);
+	free(path_env);
 	while (dir_env != NULL && command_exist == -1)
 	{
 		command_path = join_path_command(dir_env, args[0]);
@@ -39,7 +36,7 @@ int _path(char **args)
 	}
 	i--;
 	free(path_copy);
-	free_grid(array, i);
+	free_array(array, i);
 	if (command_exist == 0)
 	{
 		args[0] = command_path;
@@ -77,6 +74,27 @@ char *join_path_command(char *dir_env, char *args)
 		joined[path_len + 1] = '\0';
 	}
 	strcat(joined, args);
-
 	return (joined);
+}
+
+/**
+ * free_array - function that frees an array
+ * @array: pointer to array
+ * @n: array height
+ */
+
+void free_array(char **array, int n)
+{
+	int i = 0;
+
+	if (array == NULL)
+	{
+		return;
+	}
+
+	while (i < n)
+	{
+		free(array[i]);
+		i++;
+	}
 }

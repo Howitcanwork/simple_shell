@@ -1,36 +1,41 @@
 #include "shell.h"
 
 /**
- * _getenv - Get the content of a global variable
- * @global_var: Variable to extract from environ
- * Return: Pointer to the content of a variable, or NULL if fails
+ * _getenv - get content of environ
+ * @global: variable
+ * Return: pointer to content of environ
  */
 
-char *_getenv(char *global_var)
+char *_getenv(char *global)
 {
 	int i = 0;
-	const char cutter[] = "=";
-	char *env_tok, *envdup, *env_tok_dup;
+	const char delim[] = "=";
+	char *env_copy, *envtoken, *envtoken_copy;
 
-	if (global_var != NULL)
+	if (global == NULL)
+		return (NULL);
+	if (environ == NULL)
+		return (NULL);
+	while (environ[i] != NULL)
 	{
-		if (environ == NULL)
+		env_copy = strdup(environ[i]);
+		if (env_copy == NULL)
 			return (NULL);
-		envdup = strdup(environ[i]);
-		while (envdup != NULL)
+		envtoken = strtok(env_copy, delim);
+		if (strcmp(envtoken, global) == 0)
 		{
-			env_tok = strtok(envdup, cutter);
-			if (strcmp(env_tok, global_var) == 0)
+			envtoken = strtok(NULL, delim);
+			if (envtoken == NULL || envtoken[i] == '\0')
 			{
-				env_tok = strtok(NULL, cutter);
-				env_tok_dup = strdup(env_tok);
-				free(envdup);
-				return (env_tok_dup);
+				free(env_copy);
+				return (NULL);
 			}
-			i++;
-			free(envdup);
-			envdup = strdup(environ[i]);
+			envtoken_copy = strdup(envtoken);
+			free(env_copy);
+			return (envtoken_copy);
 		}
+		free(env_copy);
+		i++;
 	}
 	return (NULL);
 }

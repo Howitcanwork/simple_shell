@@ -1,8 +1,10 @@
 #include "shell.h"
+
 /**
  * main - simple shell in c
  * Return: 0
  */
+
 int main(void)
 {
 	ssize_t read = 0;
@@ -28,8 +30,8 @@ int main(void)
 					else
 					{
 						builtin = execute_builtin(args, status);
-if (builtin != 0)
-	status = command_notfound(args, count), free(line);
+						if (builtin != 0)
+							status = command_notfound(args, count), free(line);
 					}
 				}
 				else
@@ -49,9 +51,10 @@ if (builtin != 0)
 
 
 /**
- * last_free - Free memory for the last execution
+ * last_free - free line for last exec
  * @line: Input
  */
+
 void last_free(char *line)
 {
 	if (isatty(STDIN_FILENO))
@@ -84,10 +87,10 @@ int pr_prompt(const char *prompt, unsigned int size)
 }
 
 /**
- * command_notfound - Prints error message when a command is not found
+ * command_notfound - prints error message when command not found
  * @args: array of args typed by the user
- * @count: Times that the shell has been executed
- * Return: Exit status
+ * @count: count execution proccesses
+ * Return: exit status
  */
 int command_notfound(char **args, int count)
 {
