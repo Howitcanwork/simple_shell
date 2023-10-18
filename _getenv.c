@@ -18,7 +18,7 @@ char *_getenv(char *global)
 		return (NULL);
 	while (environ[i] != NULL)
 	{
-		env_copy = strdup(environ[i]);
+		env_copy = _strdup(environ[i]);
 		if (env_copy == NULL)
 			return (NULL);
 		envtoken = strtok(env_copy, delim);

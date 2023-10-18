@@ -15,7 +15,7 @@ int _path(char **args)
 	{
 		return (-1);
 	}
-	path_copy = strdup(path_env);
+	path_copy = _strdup(path_env);
 	dir_env = strtok(path_copy, ":");
 	if (dir_env == NULL)
 		return (-1);

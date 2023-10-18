@@ -59,18 +59,18 @@ int execute_builtin(char **args, int status)
 	}
 	while (i < 2)
 	{
-		if (strcmp(args[0], builtin_commands[i]) == 0)
+		if (_strcmp(args[0], builtin_commands[i]) == 0)
 			break;
 		i++;
 	}
 	if (i == 2)
 		return (-1);
-	if (strcmp(builtin_commands[i], "exit") == 0)
+	if (_strcmp(builtin_commands[i], "exit") == 0)
 	{
 		free(args[0]);
 		exit(status);
 	}
-	if (strcmp(builtin_commands[i], "env") == 0)
+	if (_strcmp(builtin_commands[i], "env") == 0)
 	{
 		if (environ == NULL)
 			return (0);

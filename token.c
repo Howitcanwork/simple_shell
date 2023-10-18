@@ -16,7 +16,7 @@ int token_line(char *line, char **args)
 
 	if (line == NULL)
 	{
-		perror("strdup failed");
+		perror("_strdup failed");
 		return (-1);
 	}
 	command = strtok(line, delim);
