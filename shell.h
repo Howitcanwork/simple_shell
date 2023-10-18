@@ -39,9 +39,10 @@ char *_strdup(char *strs);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *_strchr(char *s, char c);
-ssize_t r_line(char **leptr, size_t *m, FILE *stream_r);
+ssize_t get_line(char **leptr, size_t *m, FILE *stream_r);
 void g_line(char **leptr, size_t *m, char *buf, size_t k);
 int _putchar(char c);
 int print_n(int n);
-
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *_memcpy(char *to, char *from, unsigned int n);
 #endif

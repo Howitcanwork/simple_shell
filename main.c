@@ -13,7 +13,7 @@ int main(void)
 	int count = 1, path = 0, existed = 0, status = 0, builtin = 0;
 
 	pr_prompt("$ ", 2);
-	read = getline(&line, &size, stdin);
+	read = get_line(&line, &size, stdin);
 	while (read != -1)
 	{
 		if (*line != '\n')
@@ -43,7 +43,7 @@ int main(void)
 		else if (*line == '\n')
 			free(line);
 		line = NULL, count++;
-		pr_prompt("$ ", 2), read = getline(&line, &size, stdin);
+		pr_prompt("$ ", 2), read = get_line(&line, &size, stdin);
 	}
 	last_free(line);
 	return (status);

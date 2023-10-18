@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * r_line - Read inpt from stream
- * @m: size
+ * get_line - Read inpt from stream
+ * @n: size
  * @stream_r: stream to read from
- * @leptr: buffer that stores the input
+ * @line: buffer that stores the input
  * Return: number of bytes
  */
-ssize_t r_line(char **leptr, size_t *m, FILE *stream_r)
+ssize_t get_line(char **line, size_t *n, FILE *stream_r)
 {
 	static ssize_t getin;
 	char y = 'z';
 	char *buf;
-	int o;
+	int i;
 	ssize_t val;
 
 	buf = malloc(sizeof(char) * BUFSIZ);
@@ -26,13 +26,13 @@ ssize_t r_line(char **leptr, size_t *m, FILE *stream_r)
 
 	while (y != '\n')
 	{
-		o = read(STDIN_FILENO, &y, 1);
-		if (o == -1 || (o == 0 && getin == 0))
+		i = read(STDIN_FILENO, &y, 1);
+		if (i == -1 || (i == 0 && getin == 0))
 		{
 			free(buf);
 			return (-1);
 		}
-		if (o == 0 && getin != 0)
+		if (i == 0 && getin != 0)
 		{
 			getin++;
 			break;
@@ -44,9 +44,9 @@ ssize_t r_line(char **leptr, size_t *m, FILE *stream_r)
 		getin++;
 	}
 	buf[getin] = '\0';
-	g_line(leptr, m, buf, getin);
+	g_line(line, n, buf, getin);
 	val = getin;
-	if (o != 0)
+	if (i != 0)
 		getin = 0;
 	return (val);
 }
@@ -54,32 +54,32 @@ ssize_t r_line(char **leptr, size_t *m, FILE *stream_r)
 /**
  * g_line - assigns the line var
  * @buf:string
- * @m: size of line
+ * @n: size of line
  * @k: size of buffer
- * @leptr: Buffer that store the input str
+ * @line: Buffer that store the input str
  * Return: nothing
  */
-void g_line(char **leptr, size_t *m, char *buf, size_t k)
+void g_line(char **line, size_t *n, char *buf, size_t k)
 {
-	if (*leptr == NULL)
+	if (*line == NULL)
 	{
 		if  (k > BUFSIZ)
-			*m = k;
+			*n = k;
 		else
-			*m = BUFSIZ;
-		*leptr = buf;
+			*n = BUFSIZ;
+		*line = buf;
 	}
-	else if (*m < k)
+	else if (*n < k)
 	{
 		if (k > BUFSIZ)
-			*m = k;
+			*n = k;
 		else
-			*m = BUFSIZ;
-		*leptr = buf;
+			*n = BUFSIZ;
+		*line = buf;
 	}
 	else
 	{
-		_strcpy(*leptr, buf);
+		_strcpy(*line, buf);
 		free(buf);
 	}
 }
