@@ -75,7 +75,7 @@ int execute_builtin(char **args, int status)
 		if (environ == NULL)
 			return (0);
 		write(1, environ, 1000);
-		write (1, "\n", 1);
+		write(1, "\n", 1);
 	}
 	return (0);
 }

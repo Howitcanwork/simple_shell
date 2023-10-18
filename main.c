@@ -59,7 +59,7 @@ void last_free(char *line)
 {
 	if (isatty(STDIN_FILENO))
 	{
-		putchar('\n');
+		_putchar('\n');
 		free(line);
 	}
 	if (!isatty(STDIN_FILENO))
@@ -104,7 +104,7 @@ int command_notfound(char **args, int count)
 		write(2, shell_name_non, 5);
 	}
 	write(2, ": ", 2);
-	printf("%d", count);
+	print_n(count);
 	write(2, ": ", 2);
 	write(2, args[0], _strlen(args[0]));
 	write(2, ": not found\n", 12);
