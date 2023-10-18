@@ -30,8 +30,8 @@ int main(void)
 					else
 					{
 						builtin = execute_builtin(args, status);
-						if (builtin != 0)
-							status = command_notfound(args, count), free(line);
+					if (builtin != 0)
+						status = command_notfound(args, count), free(line);
 					}
 				}
 				else
