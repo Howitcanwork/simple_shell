@@ -33,5 +33,7 @@ int command_notfound(char **args, int count);
 void free_grid(char **grid, int heigth);
 int pr_prompt(const char *prompt, unsigned int size);
 char *_getenv(char *global_var);
+char *my_getenv(const char *glob_var);
+int _putchar(char c);
 
 #endif

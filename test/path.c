@@ -17,7 +17,6 @@ int _path(char **args)
         path_env = _getenv("PATH");
         if (path_env == NULL)
 	{
-		perror("getenv");
                 return (-1);
 	}
 	path_copy = strdup(path_env);

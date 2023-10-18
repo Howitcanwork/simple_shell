@@ -25,13 +25,13 @@ int execute_builtin(char **args, int status);
 int my_exit(char **args);
 int my_env(char **args);
 int count_args(char **args);
-int file_exist(char *pathname);
+int file_exist(char *path);
 void last_free(char *line);
 int _path(char **args);
 char *join_path_command(char *dir_env, char *args);
 int command_notfound(char **args, int count);
-void free_grid(char **grid, int heigth);
+void free_array(char **array, int n);
 int pr_prompt(const char *prompt, unsigned int size);
-char *_getenv(char *global_var);
+char *_getenv(char *global);
 
 #endif

@@ -42,14 +42,14 @@ int token_line(char *line, char **args)
 
 /**
  * file_exist - check if file exist
- * @pathname: path to the file
- * Return: 0 iffile exist, -1 otherwise
+ * @path: path to the file
+ * Return: 0 if file exist, -1 otherwise
  */
-int file_exist(char *pathname)
+int file_exist(char *path)
 {
 	int status;
 
-	status = (open(pathname, O_RDONLY));
+	status = (open(path, O_RDONLY));
 	if (status != -1)
 	{
 		close(status);

@@ -56,7 +56,7 @@ void last_free(char *line)
 {
 	if (isatty(STDIN_FILENO))
 	{
-		putchar('\n');
+		_putchar('\n');
 		free(line);
 	}
 	if (!isatty(STDIN_FILENO))

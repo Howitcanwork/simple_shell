@@ -34,8 +34,8 @@ int execute_command(char **args)
                         waitpid(pid ,&status, WUNTRACED);
                 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
         }
-        status = WEXITSTATUS(status);
-        return (status);
+        exec_status = WEXITSTATUS(status);
+        return (exec_status);
 }
 
 /**
@@ -50,12 +50,11 @@ int execute_builtin(char **args, int status)
                 "env",
                 "exit"
         };
-	int (*builtin_functions[])(char **) = {
+	/**int (*builtin_functions[])(char **) = {
 		&my_env,
 		&my_exit
-	};
+	};*/
         int i = 0;
-	(void)(status);
 
         if (args[0] == NULL)
         {
@@ -64,11 +63,22 @@ int execute_builtin(char **args, int status)
         while (i < 2)
         {
                 if (strcmp(args[0], builtin_commands[i]) == 0)
-                {
-                        return ((*builtin_functions[i])(args));
-                }
+			break;
                 i++;
         }
+	if (i == 2)
+		return (-1);
+	if (strcmp(builtin_commands[i], "exit") == 0)
+	{
+		free(args[0]);
+		exit(status);
+	}
+	if (strcmp(builtin_commands[i], "env") == 0)
+	{
+		if (environ == NULL)
+			return (0);
+		write(1, environ, 1000);
+	}
         return (0);
 }
 
