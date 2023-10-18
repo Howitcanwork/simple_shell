@@ -51,10 +51,6 @@ int execute_builtin(char **args, int status)
 		"env",
 		"exit"
 	};
-	/**int (*builtin_functions[])(char **) = {
-		&my_env,
-		&my_exit
-	};*/
 	int i = 0;
 
 	if (args[0] == NULL)
