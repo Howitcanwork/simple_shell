@@ -51,7 +51,7 @@ int execute_builtin(char **args, int status)
 		"env",
 		"exit"
 	};
-	int i = 0;
+	int i = 0, j;
 
 	if (args[0] == NULL)
 	{
@@ -74,8 +74,12 @@ int execute_builtin(char **args, int status)
 	{
 		if (environ == NULL)
 			return (0);
-		write(1, environ, 1000);
-		write(1, "\n", 1);
+		for (j = 0; environ[j]; j++)
+		{
+			write(1, environ, 1000);
+			write(1, "\n", 1);
+		}
+		return (0);
 	}
 	return (0);
 }
@@ -116,25 +120,4 @@ int count_args(char **args)
 		i++;
 	}
 	return (i);
-}
-
-/**
- * my_env - implement the env builtin
- * @args: array
- * Return: nothing
- */
-
-int my_env(char **args)
-{
-	int i = 0;
-	int length = 0;
-	(void)(args);
-
-	while (environ[i])
-	{
-		length = _strlen(environ[i]);
-		write(1, environ[i], length);
-		i++;
-	}
-	return (0);
 }
