@@ -72,14 +72,12 @@ int execute_builtin(char **args, int status)
 	}
 	if (_strcmp(builtin_commands[i], "env") == 0)
 	{
-		if (environ == NULL)
-			return (0);
 		for (j = 0; environ[j]; j++)
 		{
-			write(1, environ, 1000);
+			write(1, environ, _strlen(environ[j]));
 			write(1, "\n", 1);
 		}
-		return (0);
+		return (1);
 	}
 	return (0);
 }
