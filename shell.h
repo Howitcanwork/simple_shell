@@ -45,4 +45,7 @@ int _putchar(char c);
 int print_n(int n);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_memcpy(char *to, char *from, unsigned int n);
+char *_strtok(char *str, char *delim);
+int _strspn(char *string, char *chrs);
+char *_strchr(char *s, char c);
 #endif
